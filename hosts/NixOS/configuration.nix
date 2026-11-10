@@ -59,18 +59,20 @@
   services.libinput.enable = true;
 
   users.users."rover" = {
+    shell = pkgs.fish;
     isNormalUser = true;
     description = "RoVeR";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
       kdePackages.kate
-    #  thunderbird
+      rustc
+      cargo
     ];
   };
 
   # Install firefox.
   programs.firefox.enable = true;
-
+  programs.fish.enable = true ;
   nixpkgs.config.allowUnfree = true;
 
   
