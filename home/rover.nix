@@ -1,6 +1,6 @@
 { config, pkgs, username, ... }:
 let
-dots = "${config.home.homeDirectory}/dots";
+dots = "${config.home.homeDirectory}/nixos-config/dots";
 link = path: config.lib.file.mkOutOfStoreSymlink "${dots}/${path}";
 in
 {

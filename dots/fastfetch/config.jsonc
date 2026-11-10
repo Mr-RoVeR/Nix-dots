@@ -1,0 +1,137 @@
+{
+    "logo": {
+        "source": "/home/rover/.config/fastfetch/NixOS.png",
+        "type": "kitty",
+        "height": 17,
+        "width": 37,
+        "padding": {
+            "top": 5,
+            "left": 3
+        }
+    },
+    "modules": [
+        "break",
+        {
+            "type": "custom",
+            "format": "\u001b[31m┌──────────────────────OS-Distro─────────────────────┐"
+        },
+        {
+            "type": "os",
+            "key": " OS",
+            "keyColor": "red",
+            "valueColor": "magenta"
+        },
+        {
+            "type": "kernel",
+            "key": "│ ├ ",
+            "keyColor": "red",
+            "valueColor": "gray"
+        },
+        {
+            "type": "packages",
+            "key": "│ ├󰏖 ",
+            "keyColor": "red",
+            "valueColor": "purple"
+
+        },
+        {
+            "type": "shell",
+            "key": "│ └ ",
+            "keyColor": "red",
+            "valueColor": "silver"
+        },
+        {
+            "type": "custom",
+            "format": "\u001b[31m└────────────────────────────────────────────────────┘"
+        },
+        "break",
+        {
+            "type": "custom",
+            "format": "\u001b[35m┌──────────────────────Hardware──────────────────────┐"
+        },
+        {
+            "type": "host",
+            "key": " PC",
+            "keyColor": "magenta",
+            "valueColor": "red"
+        },
+        {
+            "type": "cpu",
+            "key": "│ ├ ",
+            "keyColor": "magenta",
+            "valueColor": "purple"
+        },
+        {
+            "type": "gpu",
+            "key": "│ ├󰍛 ",
+            "format": "{2},{3}",
+            "keyColor": "magenta",
+            "valueColor": "silver"
+        },
+        {
+            "type": "memory",
+            "key": "│ ├󰍛 ",
+            "keyColor": "magenta",
+            "valueColor": "gray"
+        },
+        {
+            "type": "disk",
+            "key": "│ └ ",
+            "keyColor": "magenta",
+            "valueColor": "purple"
+        },
+        {
+            "type": "custom",
+            "format": "\u001b[35m└────────────────────────────────────────────────────┘"
+        },
+        "break",
+        {
+            "type": "custom",
+            "format": "\u001b[34m┌──────────────────────DE-WM─────────────────────────┐"
+        },
+        {
+            "type": "de",
+            "key": " DE",
+            "keyColor": "blue",
+            "valueColor": "red"
+        },
+        {
+            "type": "lm",
+            "key": "│ ├ ",
+            "keyColor": "blue",
+            "valueColor": "magenta"
+        },
+        {
+            "type": "wm",
+            "key": "│ ├ ",
+            "keyColor": "blue",
+            "valueColor": "gray"
+        },
+        {
+            "type": "wmtheme",
+            "key": "│ └󰉼 ",
+            "keyColor": "blue",
+            "valueColor": "silver"
+        },
+        {
+            "type": "custom",
+            "format": "\u001b[34m└────────────────────────────────────────────────────┘"
+        },
+        "break",
+        {
+            "type": "custom",
+            "format": "\u001b[31m┌──────────────────────Uptime────────────────────────┐"
+        },
+        {
+            "type": "uptime",
+            "key": "│ Uptime ",
+            "keyColor": "red",
+            "valueColor": "purple"
+        },
+        {
+            "type": "custom",
+            "format": "\u001b[31m└────────────────────────────────────────────────────┘"
+        },
+        "break"
+            ]
+}
