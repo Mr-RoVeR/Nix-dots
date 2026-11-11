@@ -1,0 +1,10 @@
+local defaults = require("cfgs.defaults")
+
+hl.on("hyprland.start", function()
+	hl.exec_cmd("dbus-update-activation-environment --systemd --all && systemctl --user start hyprpolkitagent")
+	hl.exec_cmd("hyprctl setcursor catppuccin-mocha-dark-cursors 18")
+	hl.exec_cmd("awww-daemon")
+	hl.exec_cmd("dunst -config $HOME/.config/dunst/dunstrc")
+	hl.exec_cmd("$HOME/.config/hypr/scripts/awww.sh")
+	hl.exec_cmd("$HOME/.config/hypr/scripts/waylaunch.sh")
+end)

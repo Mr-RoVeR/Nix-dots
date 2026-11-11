@@ -1,7 +1,8 @@
 { username, ... }:
 {
   imports = [
-    ./home-modules/user-pkgs.nix
+    ./home-modules/user-pkgs-list.nix
+        ./home-modules/user-pkgs-dec.nix
     ./home-modules/shell.nix
     ./home-modules/git.nix
     ./home-modules/dotfiles.nix

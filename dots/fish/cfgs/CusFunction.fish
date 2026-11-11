@@ -41,3 +41,9 @@ function snappit
 
     sudo snapper -c root create -d "$description"
 end
+
+function nixclean --description 'Delete old generations, collect garbage, refresh boot entries'
+    sudo nix-collect-garbage -d
+    nix-collect-garbage -d
+    sudo nixos-rebuild boot --flake ~/nixos-config#NixOS
+end
