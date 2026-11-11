@@ -1,10 +1,10 @@
 { username, ... }:
 {
   imports = [
-    ./modules/user-pkgs.nix
-    ./modules/shell.nix
-    ./modules/git.nix
-    ./modules/dotfiles.nix
+    ./home-modules/user-pkgs.nix
+    ./home-modules/shell.nix
+    ./home-modules/git.nix
+    ./home-modules/dotfiles.nix
   ];
 
   home = {

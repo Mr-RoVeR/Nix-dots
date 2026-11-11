@@ -2,7 +2,7 @@
 {
   home.packages = with pkgs; [
     # editor / dev
-    neovim nodejs python3 clang gnumake
+    neovim nodejs python3 clang gnumake rustc cargo
 
     # cli
     fish htop eza ripgrep ugrep unzip fastfetch
@@ -11,6 +11,6 @@
     nerd-fonts.jetbrains-mono
 
     # apps
-    telegram-desktop qbittorrent mpv
+    telegram-desktop qbittorrent mpv 
   ];
 }
