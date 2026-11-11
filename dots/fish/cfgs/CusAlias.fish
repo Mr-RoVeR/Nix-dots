@@ -46,4 +46,4 @@ alias cdw 'cd ~/WorkSpace'
 alias cd. 'cd ~/.config'
 
 #NixOS alias
-alias rebuild 'nixos-rebuild switch --flake /home/rover/nixos-config#NixOS'
+alias rebuild 'sudo nixos-rebuild switch --flake /home/rover/nixos-config#NixOS'
