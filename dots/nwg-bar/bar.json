@@ -2,21 +2,21 @@
   {
     "label": "Lock",
     "exec": "hyprlock",
-    "icon": "/etc/profiles/per-user/rover/share/application"
+    "icon": "/run/current-system/sw/share/icons/Papirus-Dark/16x16/actions/system-lock-screen.svg"
   },
   {
     "label": "Logout",
     "exec": "/home/rover/.config/hypr/scripts/logout.sh",
-    "icon": "/usr/share/nwg-bar/images/system-log-out.svg"
+    "icon": "/run/current-system/sw/share/icons/Papirus-Dark/16x16/actions/system-log-out.svg"
   },
   {
     "label": "Reboot",
     "exec": "loginctl reboot",
-    "icon": "/usr/share/nwg-bar/images/system-reboot.svg"
+    "icon": "/run/current-system/sw/share/icons/Papirus-Dark/16x16/actions/system-reboot.svg"
   },
   {
     "label": "Shutdown",
     "exec": "loginctl poweroff",
-    "icon": "/usr/share/nwg-bar/images/system-shutdown.svg"
+    "icon": "/run/current-system/sw/share/icons/Papirus-Dark/16x16/actions/system-shutdown.svg"
   }
 ]

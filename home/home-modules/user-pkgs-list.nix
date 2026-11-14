@@ -5,9 +5,8 @@
         jq neovim nodejs python3 clang gnumake rustc cargo
 
 # cli
-            fish htop eza ripgrep ugrep unzip 
-            fastfetch awww waybar rofimoji yazi
-            nixd stylua grim slurp
+            fish htop eza ripgrep ugrep unzip  tree
+            fastfetch nixd stylua 
 
 # fonts
             nerd-fonts.jetbrains-mono
@@ -21,5 +20,9 @@
 
 #Engine
             godot_4
+
+#Hyprland 
+            awww waybar rofimoji yazi grim slurp aria2 yt-dlp
+            hypridle
 ];
 }
