@@ -1,40 +1,55 @@
-{pkgs, ...}:
+
+{ pkgs, ... }:
+
 {
+  gtk = {
+    enable = true;
+    colorScheme = "dark";
 
-    gtk = {
-        enable = true;
-        theme = {
-            package = pkgs.catppuccin-gtk.override { variant = "mocha"; accents = [ "mauve" ]; };
-            name = "catppuccin-mocha-mauve-standard";
-        };
-        iconTheme = {
-            package = pkgs.papirus-icon-theme;
-            name = "Papirus-Dark";
-        };
+    theme = {
+      package = pkgs.catppuccin-gtk.override {
+        variant = "mocha";
+        accents = [ "mauve" ];
+      };
+      name = "catppuccin-mocha-mauve-standard";
     };
 
-    home.pointerCursor = {
-        enable = true;
-        package = pkgs.catppuccin-cursors.mochaDark;
-        name = "catppuccin-mocha-dark-cursors";
-        size = 18;
-        gtk.enable = true;
-        x11.enable = true;
+    iconTheme = {
+      package = pkgs.papirus-icon-theme;
+      name = "Papirus-Dark";
     };
 
-    qt = {
-        enable = true;
-        platformTheme.name = "gtk3";
-        style.name = "gtk3";
+    font = {
+      name = "Noto Sans";
+      size = 10;
     };
+  };
 
-    dconf.settings."org/gnome/desktop/interface".color-scheme = "prefer-dark";
+  home.pointerCursor = {
+    enable = true;
+    package = pkgs.catppuccin-cursors.latteLight;
+    name = "catppuccin-latte-light-cursors";
+    size = 18;
 
-    programs.rofi = {
-        enable = true;
-        package = pkgs.rofi;
-            plugins = with pkgs; [
-            rofi-calc
-            ];
-    };
+    gtk.enable = true;
+    x11.enable = true;
+
+    # Enable this if the cursor theme supports Hyprcursor.
+    # hyprcursor.enable = true;
+  };
+
+  qt = {
+    enable = true;
+    platformTheme.name = "gtk3";
+    style.name = "gtk3";
+  };
+
+  programs.rofi = {
+    enable = true;
+    package = pkgs.rofi;
+
+    plugins = with pkgs; [
+      rofi-calc
+    ];
+  };
 }

@@ -6,7 +6,8 @@
 
 # cli
             fish htop eza ripgrep ugrep unzip 
-            fastfetch awww waybar rofimoji
+            fastfetch awww waybar rofimoji yazi
+            nixd stylua
 
 # fonts
             nerd-fonts.jetbrains-mono
@@ -17,5 +18,8 @@
 
 #Sys
             xdg-desktop-portal-hyprland wl-clipboard dunst thunar iwd
-    ];
+
+#Engine
+            godot_4
+];
 }
