@@ -7,7 +7,7 @@
 # cli
             fish htop eza ripgrep ugrep unzip 
             fastfetch awww waybar rofimoji yazi
-            nixd stylua
+            nixd stylua grim slurp
 
 # fonts
             nerd-fonts.jetbrains-mono

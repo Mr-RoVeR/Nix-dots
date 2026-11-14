@@ -5,16 +5,16 @@ let
 in
 {
   xdg.configFile = {
-    "nvim".source = link "nvim";
-    "fish".source = link "fish";
-    "fastfetch".source = link "fastfetch";
-    "dunst".source = link "dunst";
-    "nwg-bar".source = link "nwg-bar";
-    "nwg-look".source = link "nwg-look";
-    "strawberry".source = link "strawberry";
-    "kitty".source = link "kitty";
-    "hypr".source = link "hypr";
-    "rofi".source = link "rofi";
-    "waybar".source = link "waybar";
+      "dunst".source = link "dunst";
+      "fastfetch".source = link "fastfetch";
+      "fish".source = link "fish";
+      "hypr".source = link "hypr";
+      "kitty".source = link "kitty";
+      "nvim".source = link "nvim";
+      "nwg-bar".source = link "nwg-bar";
+      "nwg-look".source = link "nwg-look";
+      "rofi".source = link "rofi";
+      "strawberry".source = link "strawberry";
+      "waybar".source = link "waybar";
   };
 }
