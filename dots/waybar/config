@@ -121,7 +121,7 @@
         "format": "{:%H:%M}"
     },
 "network": {
-    "interface": "wlan0",
+    "interface": "wlp0s20f3",
     "interval": 2,
     "format-wifi": "{icon}",
     "format-ethernet": "󰈀",
@@ -130,7 +130,7 @@
     "tooltip-format-wifi": "{essid} ({signalStrength}%)\n󰇚 {bandwidthDownBytes}   󰕒 {bandwidthUpBytes}\nIP: {ipaddr}",
     "tooltip-format-ethernet": "{ifname}\n󰇚 {bandwidthDownBytes}   󰕒 {bandwidthUpBytes}\nIP: {ipaddr}",
     "tooltip-format-disconnected": "Not connected",
-    "on-click": "kitty -e iwctl"
+    "on-click": "kitty -e nmtui"
 },
     "bluetooth": {
         "format": "󰂯",

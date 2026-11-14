@@ -1,8 +1,8 @@
 hl.env("ELECTRON_OZONE_PLATFORM_HINT", "wayland")
 hl.env("XCURSOR_SIZE", "18")
 hl.env("HYPRCURSOR_SIZE", "18")
-hl.env("HYPRCURSOR_THEME", "Bibata-Modern-Ice")
-hl.env("XCURSOR_THEME", "Bibata-Modern-Ice")
+hl.env("HYPRCURSOR_THEME", "catppuccin-latte-light-cursors")
+hl.env("XCURSOR_THEME", "catppuccin-latte-light-cursors")
 
 hl.env("GDK_BACKEND", "wayland,x11,*")
 hl.env("QT_QPA_PLATFORM", "wayland;xcb")

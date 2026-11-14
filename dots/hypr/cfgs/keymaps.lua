@@ -5,7 +5,7 @@ local fileManager = defaults.fileManager or "nautilus"
 local mainMod = "ALT"
 
 hl.bind(mainMod .. " + Return", hl.dsp.exec_cmd(terminal))
-hl.bind(mainMod .. " + CTRL + Q", hl.dsp.window.kill())
+hl.bind(mainMod .. " + CTRL + Q", hl.dsp.window.close())
 hl.bind(mainMod .. " + SHIFT + M", hl.dsp.exec_cmd("nwg-bar"))
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
 hl.bind(mainMod .. " + Space", hl.dsp.exec_cmd("$HOME/.config/rofi/launcher.sh"))

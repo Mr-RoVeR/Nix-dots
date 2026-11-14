@@ -47,3 +47,4 @@ alias cd. 'cd ~/.config'
 
 #NixOS alias
 alias rebuild 'sudo nixos-rebuild switch --flake /home/rover/nixos-config#NixOS'
+alias !hypr 'dbus-run-session start-hyprland'
