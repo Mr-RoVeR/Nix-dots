@@ -85,3 +85,10 @@ hl.bind("XF86AudioPlay", hl.dsp.exec_cmd("playerctl play-pause"), { locked = tru
 hl.bind("XF86AudioPrev", hl.dsp.exec_cmd("playerctl previous"), { locked = true })
 hl.bind("XF86Calculator", hl.dsp.exec_cmd("rofi -show calc -theme ~/.config/rofi/style.rasi"), { locked = true })
 hl.bind("SUPER + Period", hl.dsp.exec_cmd("rofi -show emoji -theme ~/.config/rofi/style.rasi"))
+
+-- External Monitor
+hl.bind(mainMod .." + SUPER + P", hl.dsp.exec_cmd("nwg-displays"))
+hl.bind("SUPER + H", hl.dsp.exec_cmd("hyprctl dispatch focusmonitor l"))
+hl.bind("SUPER + L", hl.dsp.exec_cmd("hyprctl dispatch focusmonitor r"))
+hl.bind("SUPER + SHIFT + H", hl.dsp.exec_cmd("hyprctl dispatch movewindow mon:l"))
+hl.bind("SUPER + SHIFT + L", hl.dsp.exec_cmd("hyprctl dispatch movewindow mon:r"))
