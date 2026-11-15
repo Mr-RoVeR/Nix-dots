@@ -129,6 +129,14 @@
             "valueColor": "purple"
         },
         {
+            "type": "disk",
+            "key": "│ OS Age ",
+            "folders": "/",
+            "format": "{days} days (installed {create-time:10})",
+            "keyColor": "red",
+            "valueColor": "purple"
+        },
+        {
             "type": "custom",
             "format": "\u001b[31m└────────────────────────────────────────────────────┘"
         },
