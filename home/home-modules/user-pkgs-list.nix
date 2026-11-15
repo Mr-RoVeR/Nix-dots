@@ -6,10 +6,10 @@
 
 # cli
             fish htop eza ripgrep ugrep unzip  tree
-            fastfetch nixd stylua 
+            fastfetch nixd stylua ffmpeg-full
 
 # fonts
-            nerd-fonts.jetbrains-mono
+            nerd-fonts.jetbrains-mono lohit-fonts.kannada
 
 # apps
             telegram-desktop qbittorrent mpv vesktop
