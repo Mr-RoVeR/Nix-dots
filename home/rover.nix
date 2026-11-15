@@ -2,8 +2,9 @@
 {
   imports = [
     ./home-modules/user-pkgs-list.nix
-        ./home-modules/user-pkgs-dec.nix
+    ./home-modules/user-pkgs-dec.nix
     ./home-modules/shell.nix
+    ./home-modules/neovim.nix
     ./home-modules/git.nix
     ./home-modules/dotfiles.nix
   ];

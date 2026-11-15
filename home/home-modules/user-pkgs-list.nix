@@ -2,10 +2,10 @@
 {
     home.packages = with pkgs; [
 # editor-dev
-        jq neovim nodejs python3 clang gnumake rustc cargo
+        jq nodejs python3 clang gnumake rustc cargo
 
 # cli
-            fish htop eza ripgrep ugrep unzip  tree
+            fish htop eza ripgrep ugrep unzip tree
             fastfetch nixd stylua ffmpeg-full
 
 # fonts
@@ -16,7 +16,7 @@
             nwg-look nwg-bar kitty librewolf
 
 #Sys
-            xdg-desktop-portal-hyprland wl-clipboard dunst thunar iwd
+            xdg-desktop-portal-hyprland wl-clipboard dunst thunar iwd pavucontrol
 
 #Engine
             godot_4
