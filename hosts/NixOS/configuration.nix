@@ -10,6 +10,7 @@
       ./host-modules/audio.nix
       ./host-modules/users.nix
       ./host-modules/host-pkgs.nix
+      ./host-modules/power.nix
       ./hardware-configuration.nix
     ];
   services.openssh.enable = true;
