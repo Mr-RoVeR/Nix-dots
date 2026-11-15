@@ -19,7 +19,7 @@
         inherit system;
         specialArgs = { inherit inputs username; };
         modules = [
-          ./hosts/${hostname}/configuration.nix
+          ./hosts/NixOS/configuration.nix
           home-manager.nixosModules.home-manager
           {
             home-manager = {
