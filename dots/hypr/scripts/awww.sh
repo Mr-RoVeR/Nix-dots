@@ -1,4 +1,4 @@
-#!/usr/bin/env fish
+#!/run/current-system/sw/bin/env fish
 
 set WALLPAPER_DIR "$HOME/nixos-config/dots/hypr/walls/"
 

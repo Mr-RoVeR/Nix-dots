@@ -11,12 +11,12 @@
   },
   {
     "label": "Reboot",
-    "exec": "loginctl reboot",
+    "exec": "systemctl reboot",
     "icon": "/run/current-system/sw/share/icons/Papirus-Dark/16x16/actions/system-reboot.svg"
   },
   {
     "label": "Shutdown",
-    "exec": "loginctl poweroff",
+    "exec": "systemctl poweroff",
     "icon": "/run/current-system/sw/share/icons/Papirus-Dark/16x16/actions/system-shutdown.svg"
   }
 ]
