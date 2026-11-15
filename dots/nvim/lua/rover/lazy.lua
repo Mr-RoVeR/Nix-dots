@@ -19,4 +19,9 @@ require("lazy").setup({ { import = "rover.plugins" }, { import = "rover.plugins.
 	change_detection = {
 		notify = false,
 	},
+	performance = {
+		rtp = {
+			paths = { vim.fn.stdpath("data") .. "/site/pack/nix/start/nvim-treesitter" },
+		},
+	},
 })

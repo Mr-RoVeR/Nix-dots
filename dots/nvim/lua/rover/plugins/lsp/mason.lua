@@ -18,20 +18,5 @@ return {
 				},
 			},
 		})
-
-		mason_lspconfig.setup({
-			ensure_installed = {
-				"clangd",
-			},
-		})
-
-		mason_tool_installer.setup({
-			ensure_installed = {
-				"prettier",
-				"stylua",
-				"isort",
-				"black",
-			},
-		})
 	end,
 }

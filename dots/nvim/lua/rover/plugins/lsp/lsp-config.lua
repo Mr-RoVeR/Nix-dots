@@ -7,8 +7,6 @@ return {
 		{ "folke/neodev.nvim", opts = {} },
 	},
 	config = function()
-		local lspconfig = require("lspconfig")
-		local mason_lspconfig = require("mason-lspconfig")
 		local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
 		vim.api.nvim_create_autocmd("LspAttach", {
@@ -27,8 +25,22 @@ return {
 					{ "n", "<leader>rn", vim.lsp.buf.rename, "Smart rename" },
 					{ "n", "<leader>D", "<cmd>Telescope diagnostics bufnr=0<CR>", "Show buffer diagnostics" },
 					{ "n", "<leader>d", vim.diagnostic.open_float, "Show line diagnostics" },
-					{ "n", "[d", vim.diagnostic.goto_prev, "Go to previous diagnostic" },
-					{ "n", "]d", vim.diagnostic.goto_next, "Go to next diagnostic" },
+					{
+						"n",
+						"[d",
+						function()
+							vim.diagnostic.jump({ count = -1 })
+						end,
+						"Go to previous diagnostic",
+					},
+					{
+						"n",
+						"]d",
+						function()
+							vim.diagnostic.jump({ count = 1 })
+						end,
+						"Go to next diagnostic",
+					},
 					{ "n", "K", vim.lsp.buf.hover, "Show documentation for cursor" },
 					{ "n", "<leader>rs", ":LspRestart<CR>", "Restart LSP" },
 				}
@@ -40,34 +52,43 @@ return {
 			end,
 		})
 
-		local capabilities = cmp_nvim_lsp.default_capabilities()
-
+		-- Paste your own icon glyphs back between the quotes
 		vim.diagnostic.config({
 			signs = {
-				error = { text = "", texthl = "DiagnosticSignError" },
-				warn = { text = "", texthl = "DiagnosticSignWarn" },
-				info = { text = "", texthl = "DiagnosticSignInfo" },
-				hint = { text = "", texthl = "DiagnosticSignHint" },
+				text = {
+					[vim.diagnostic.severity.ERROR] = "",
+					[vim.diagnostic.severity.WARN] = "",
+					[vim.diagnostic.severity.INFO] = "",
+					[vim.diagnostic.severity.HINT] = "",
+				},
 			},
 		})
 
-		mason_lspconfig.setup({
-			function(server_name)
-				lspconfig[server_name].setup({
-					capabilities = capabilities,
-				})
-			end,
-			["lua_ls"] = function()
-				lspconfig["lua_ls"].setup({
-					capabilities = capabilities,
-					settings = {
-						Lua = {
-							diagnostics = { globals = { "vim" } },
-							completion = { callSnippet = "Replace" },
-						},
-					},
-				})
-			end,
+		-- Applied to every server
+		vim.lsp.config("*", { capabilities = cmp_nvim_lsp.default_capabilities() })
+
+		-- Server-specific settings
+		vim.lsp.config("lua_ls", {
+			settings = {
+				Lua = {
+					diagnostics = { globals = { "vim" } },
+					completion = { callSnippet = "Replace" },
+				},
+			},
+		})
+
+		-- The servers themselves come from Nix (nvimExtraPackages in neovim.nix), not Mason
+		vim.lsp.enable({
+			"lua_ls",
+			"nixd",
+			"bashls",
+			"jsonls",
+			"html",
+			"cssls",
+			"basedpyright",
+			"ruff",
+			"ts_ls",
+			"svelte",
 		})
 	end,
 }
