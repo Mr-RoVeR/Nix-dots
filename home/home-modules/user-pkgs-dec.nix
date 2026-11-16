@@ -1,4 +1,3 @@
-
 { pkgs, ... }:
 
 {
@@ -51,5 +50,13 @@
     plugins = with pkgs; [
       rofi-calc
     ];
+  };
+
+  programs.obs-studio = {
+    enable = true;
+    plugins = with pkgs.obs-studio-plugins; [ obs-pipewire-audio-capture ];
+  };
+  programs.vivaldi = {
+    enable = true;
   };
 }
