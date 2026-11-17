@@ -1,7 +1,7 @@
 { pkgs, ... }:
 let
   nvimExtraPackages = with pkgs; [
-    
+
     # LSP
     lua-language-server
     nil
@@ -53,9 +53,8 @@ let
     p.c
     p.cpp
     p.rust
+    p.svelte
   ]);
-
-  # Wrap unwrapped Neovim directly: avoids rplugin.vim bug AND .config/nvim/init.lua collision
   customNeovim = pkgs.symlinkJoin {
     name = "neovim-wrapped";
     paths = [ pkgs.neovim-unwrapped ];
@@ -69,15 +68,12 @@ let
   };
 in
 {
-  # 1. Install the wrapped Neovim binary
   home.packages = [ customNeovim ];
 
-  # 2. Set default editor environment variables
   home.sessionVariables = {
     EDITOR = "nvim";
     VISUAL = "nvim";
   };
 
-  # 3. Link Treesitter parsers into ~/.local/share/nvim/site (outside ~/.config/nvim)
   xdg.dataFile."nvim/site/pack/nix/start/nvim-treesitter".source = treesitterParsers;
 }
