@@ -1,19 +1,19 @@
-@define-color base      #25253a;
-@define-color mantle    #1c1c2e;
-@define-color crust     #13131f;
-@define-color surface0  #36374f;
-@define-color surface1  #4d4e6b;
-@define-color overlay0  #7d80a3;
-@define-color text      #e2e8ff;
-@define-color subtext0  #b8bfe0;
+@define-color base      #232136;
+@define-color crust     #191724;
 
-@define-color pink      #ff9ae0;
-@define-color mauve     #c89bff;
-@define-color red       #ff6e8a;
-@define-color yellow    #ffde67;
-@define-color green     #8cf0a0;
-@define-color sky       #6ee4f8;
-@define-color lavender  #a8b5ff;
+@define-color hl_med    #44415a;
+@define-color hl_high   #56526e;
+
+@define-color muted     #6e6a86;
+@define-color subtle    #908caa;
+@define-color text      #F5F5F5;
+
+@define-color love      #f2739b;
+@define-color gold      #f8c87b;
+@define-color rose      #f2a7a3;
+@define-color foam      #a3d9e3;
+@define-color iris      #cdb0f0;
+@define-color pine      #4b9dbd;
 
 * {
   border: none;
@@ -23,8 +23,9 @@
   min-height: 0;
   font-family: "JetBrainsMono Nerd Font";
   font-size: 16px;
-  font-weight: 600;
+  font-weight: 700;
 }
+
 window#waybar {
   background: transparent;
   color: @text;
@@ -39,7 +40,7 @@ window#waybar.hidden {
   padding: 0 4px;
   border-radius: 12px;
   background-color: alpha(@base, 0.92);
-  border: 1px solid alpha(@surface1, 0.7);
+  border: 1px solid alpha(@hl_high, 0.6);
 }
 
 #workspaces button {
@@ -48,11 +49,12 @@ window#waybar.hidden {
   border-radius: 8px;
   background-color: transparent;
   background-image: none;
-  color: @subtext0;
+  color: @subtle;
   transition:
     background-color 150ms ease-out,
     color 150ms ease-out;
 }
+
 #workspaces button:focus,
 #workspaces button:active,
 #workspaces button:checked {
@@ -62,34 +64,47 @@ window#waybar.hidden {
 }
 
 #workspaces button.empty {
-  color: @overlay0;
+  color: @muted;
+}
+
+#workspaces button.visible:not(.active) {
+  background-color: alpha(@iris, 0.18);
+  color: @iris;
+}
+
+#workspaces button.special {
+  color: @gold;
 }
 
 #workspaces button:hover:not(.active) {
-  background-color: @surface0;
+  background-color: @hl_med;
   background-image: none;
   color: @text;
 }
 
 #workspaces button:active:not(.active) {
-  background-color: @surface1;
+  background-color: @hl_high;
 }
 
 #workspaces button.active,
 #workspaces button.active:hover {
-  background-color: @mauve;
-  background-image: none;
+  background-color: @iris;
+  background-image: linear-gradient(to right, @iris, @rose);
+  box-shadow: 0 0 8px alpha(@iris, 0.4);
   color: @crust;
 }
 
 #workspaces button.urgent,
 #workspaces button.urgent:hover {
-  background-color: @red;
+  background-color: @love;
   background-image: none;
   color: @crust;
 }
 
 #memory,
+#cpu,
+#temperature,
+#disk,
 #custom-power,
 #bluetooth,
 #wireplumber,
@@ -104,7 +119,7 @@ window#waybar.hidden {
   padding: 0 14px;
   border-radius: 12px;
   background-color: alpha(@base, 0.92);
-  border: 1px solid alpha(@surface1, 0.7);
+  border: 1px solid alpha(@hl_high, 0.6);
   color: @text;
   transition:
     background-color 150ms ease-out,
@@ -116,8 +131,9 @@ window#waybar.hidden {
 #bluetooth:hover,
 #backlight:hover,
 #battery:hover,
-#power-profiles-daemon:hover {
-  background-color: @surface0;
+#power-profiles-daemon:hover,
+#idle_inhibitor:hover {
+  background-color: @hl_med;
 }
 
 #wireplumber:active,
@@ -126,11 +142,11 @@ window#waybar.hidden {
 #backlight:active,
 #battery:active,
 #power-profiles-daemon:active {
-  background-color: @surface1;
+  background-color: @hl_high;
 }
 
 #clock {
-  color: @mauve;
+  color: @rose;
   font-weight: 700;
 }
 
@@ -138,8 +154,7 @@ window#waybar.hidden {
 #network,
 #bluetooth,
 #backlight {
-  color: @lavender;
-  font-size: 16px;
+  color: @iris;
 }
 
 #network {
@@ -147,68 +162,112 @@ window#waybar.hidden {
 }
 
 #wireplumber.muted {
-  color: @overlay0;
+  color: @love;
+  border-color: alpha(@love, 0.45);
+  background-image: linear-gradient(
+    to right,
+    alpha(@love, 0.16),
+    alpha(@love, 0.04)
+  );
+}
+
+#wireplumber.muted:hover {
+  background-image: linear-gradient(
+    to right,
+    alpha(@love, 0.26),
+    alpha(@love, 0.1)
+  );
 }
 
 #network.disconnected {
-  color: @red;
+  color: @love;
 }
 
 #bluetooth.off,
 #bluetooth.disabled {
-  color: @overlay0;
+  color: @muted;
 }
 
 #memory,
-#power-profiles-daemon {
-  color: @subtext0;
-}
-
+#cpu,
+#temperature,
+#disk,
+#power-profiles-daemon,
 #idle_inhibitor {
-  color: @subtext0;
-  font-size: 16px;
-}
-
-#idle_inhibitor:hover {
-  background-color: @surface0;
+  color: @subtle;
 }
 
 #idle_inhibitor.activated,
 #idle_inhibitor.activated:hover {
-  background-color: @pink;
+  background-color: @rose;
   color: @crust;
 }
 
 #custom-power {
-  margin-right: 8px;
-  color: @red;
-  font-size: 16px;
+  margin-right: 6px;
+  font-size: 18px;
+  color: @foam;
+  border-color: alpha(@pine, 0.7);
 }
 
 #custom-power:hover {
-  background-color: @red;
+  background-color: @pine;
+  background-image: linear-gradient(to right, @pine, @foam);
+  box-shadow: 0 0 8px alpha(@foam, 0.4);
+  border-color: @foam;
   color: @crust;
 }
 
 #custom-power:active {
-  background-color: alpha(@red, 0.7);
+  background-image: linear-gradient(
+    to right,
+    alpha(@pine, 0.8),
+    alpha(@foam, 0.8)
+  );
+  box-shadow: none;
   color: @crust;
 }
+
 #battery {
-  color: @green;
+  color: @foam;
+  border-color: alpha(@foam, 0.4);
 }
 
 #battery.charging,
 #battery.plugged {
-  color: @sky;
+  color: @iris;
+  border-color: alpha(@iris, 0.5);
+  background-image: linear-gradient(
+    to right,
+    alpha(@iris, 0.2),
+    alpha(@iris, 0.04)
+  );
+}
+
+#battery.full {
+  color: @foam;
+  border-color: alpha(@foam, 0.55);
+  background-image: linear-gradient(
+    to right,
+    alpha(@foam, 0.18),
+    alpha(@foam, 0.04)
+  );
 }
 
 #battery.warning:not(.charging) {
-  color: @yellow;
+  color: @gold;
+  border-color: alpha(@gold, 0.55);
+  background-image: linear-gradient(
+    to right,
+    alpha(@gold, 0.2),
+    alpha(@gold, 0.05)
+  );
 }
 
 #battery.critical:not(.charging) {
-  background-color: @red;
+  background-color: @love;
+  background-image: none;
+  border-color: @love;
   color: @crust;
   animation-name: pulse;
   animation-duration: 1.2s;
@@ -220,7 +279,7 @@ window#waybar.hidden {
 @keyframes pulse {
   to {
     background-color: @base;
-    color: @red;
+    color: @love;
   }
 }
 
@@ -236,7 +295,7 @@ menu {
   padding: 4px;
   border-radius: 10px;
   background-color: @base;
-  border: 1px solid @surface1;
+  border: 1px solid @hl_med;
   color: @text;
 }
 
@@ -248,11 +307,22 @@ menu menuitem {
 }
 
 menu menuitem:hover {
-  background-color: @surface0;
+  background-color: @hl_med;
 }
 
 menu menuitem:disabled {
-  color: @overlay0;
+  color: @muted;
+}
+
+tooltip {
+  border-radius: 10px;
+  background-color: @base;
+  border: 1px solid @hl_med;
+}
+
+tooltip label {
+  padding: 4px 4px;
+  color: @text;
 }
 
 .modules-left > widget:first-child > * {
@@ -261,15 +331,4 @@ menu menuitem:disabled {
 
 .modules-right > widget:last-child > * {
   margin-right: 10px;
-}
-
-tooltip {
-  border-radius: 10px;
-  background-color: @base;
-  border: 1px solid @surface1;
-}
-
-tooltip label {
-  padding: 4px 4px;
-  color: @text;
 }

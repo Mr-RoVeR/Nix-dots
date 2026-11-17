@@ -87,30 +87,56 @@
     "backlight": {
         "device": "intel_backlight",
         "format": "{icon} {percent}%",
-        "format-icons": ["󰃞", "󰃟", "󰃠"],
+        "format-icons": [
+            "󰃞",
+            "󰃟",
+            "󰃠"
+        ],
         "scroll-step": 5,
         "tooltip-format": "Brightness: {percent}%",
         "smooth-scrolling-threshold": 1
     },
-"battery": {
-    "bat": "BAT0",
-    "interval": 30,
-    "states": {
-        "good": 95,
-        "warning": 30,
-        "critical": 15
+    "battery": {
+        "bat": "BAT0",
+        "interval": 30,
+        "states": {
+            "good": 95,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon} {capacity}%",
+        "format-charging": "{icon} {capacity}%",
+        "format-plugged": "󰚥 {capacity}%",
+        "format-full": "󰁹 {capacity}%",
+        "format-alt": "{icon} {time}",
+        "format-icons": {
+            "default": [
+                "󰁺",
+                "󰁻",
+                "󰁼",
+                "󰁽",
+                "󰁾",
+                "󰁿",
+                "󰂀",
+                "󰂁",
+                "󰂂",
+                "󰁹"
+            ],
+            "charging": [
+                "󰢜",
+                "󰂆",
+                "󰂇",
+                "󰂈",
+                "󰢝",
+                "󰂉",
+                "󰢞",
+                "󰂊",
+                "󰂋",
+                "󰂅"
+            ]
+        },
+        "tooltip-format": "{timeTo}\nCapacity: {capacity}%\nPower: {power:.1f}W\nHealth: {health}%"
     },
-    "format": "{icon} {capacity}%",
-    "format-charging": "{icon} {capacity}%",
-    "format-plugged": "󰚥 {capacity}%",
-    "format-full": "󰁹 {capacity}%",
-    "format-alt": "{icon} {time}",
-    "format-icons": {
-        "default": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
-        "charging": ["󰢜", "󰂆", "󰂇", "󰂈", "󰢝", "󰂉", "󰢞", "󰂊", "󰂋", "󰂅"]
-    },
-    "tooltip-format": "{timeTo}\nCapacity: {capacity}%\nPower: {power:.1f}W\nHealth: {health}%"
-},
     "tray": {
         "icon-size": 18,
         "spacing": 12
@@ -120,18 +146,24 @@
         "format-alt": "  {:%a, %d %b %Y}",
         "format": "{:%H:%M}"
     },
-"network": {
-    "interface": "wlp0s20f3",
-    "interval": 2,
-    "format-wifi": "{icon}",
-    "format-ethernet": "󰈀",
-    "format-disconnected": "󰤮",
-    "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
-    "tooltip-format-wifi": "{essid} ({signalStrength}%)\n󰇚 {bandwidthDownBytes}   󰕒 {bandwidthUpBytes}\nIP: {ipaddr}",
-    "tooltip-format-ethernet": "{ifname}\n󰇚 {bandwidthDownBytes}   󰕒 {bandwidthUpBytes}\nIP: {ipaddr}",
-    "tooltip-format-disconnected": "Not connected",
-    "on-click": "kitty -e nmtui"
-},
+    "network": {
+        "interface": "wlp0s20f3",
+        "interval": 2,
+        "format-wifi": "{icon}",
+        "format-ethernet": "󰈀",
+        "format-disconnected": "󰤮",
+        "format-icons": [
+            "󰤯",
+            "󰤟",
+            "󰤢",
+            "󰤥",
+            "󰤨"
+        ],
+        "tooltip-format-wifi": "{essid} ({signalStrength}%)\n󰇚 {bandwidthDownBytes}   󰕒 {bandwidthUpBytes}\nIP: {ipaddr}",
+        "tooltip-format-ethernet": "{ifname}\n󰇚 {bandwidthDownBytes}   󰕒 {bandwidthUpBytes}\nIP: {ipaddr}",
+        "tooltip-format-disconnected": "Not connected",
+        "on-click": "kitty -e nmtui"
+    },
     "bluetooth": {
         "format": "󰂯",
         "format-off": "󰂲",
@@ -144,24 +176,28 @@
         "on-click": "blueman-manager",
         "on-click-right": "$HOME/.config/hypr/scripts/toggle_bluetooth.sh"
     },
-"wireplumber": {
-    "format": "{icon}{volume}%",
-    "format-bluetooth": "󰂰 {volume}%",
-    "format-muted": "󰝟 ",
-    "nospacing": 1,
-    "tooltip-format": "{node_name}",
-    "format-icons": {
-        "headphone": "󰋋 ",
-        "default": [" ", " ", " "]
+    "wireplumber": {
+        "format": "{icon}{volume}%",
+        "format-bluetooth": "󰂰 {volume}%",
+        "format-muted": "󰝟 ",
+        "nospacing": 1,
+        "tooltip-format": "{node_name}",
+        "format-icons": {
+            "headphone": "󰋋 ",
+            "default": [
+                " ",
+                " ",
+                " "
+            ]
+        },
+        "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+        "on-click-right": "pavucontrol &",
+        "on-scroll-up": "wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 5%+",
+        "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-",
+        "scroll-step": 5
     },
-    "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
-    "on-click-right": "pavucontrol &",
-    "on-scroll-up": "wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 5%+",
-    "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-",
-    "scroll-step": 5
-},
     "custom/power": {
-        "format": "⏻",
+        "format": "󱄅",
         "tooltip": false,
         "on-click": "nwg-bar"
     }
