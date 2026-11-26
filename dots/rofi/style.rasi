@@ -44,11 +44,60 @@ mainbox {
 }
 
 imagebox {
-    padding:                     25px;
+    padding:                     15px;
     background-color:            @base;
     border-radius:               18px 0px 0px 18px;
     orientation:                 vertical;
-    children:                    [ "inputbar", "textbox-art", "mode-switcher" ];
+    children:                    [ "inputbar", "brand-box", "mode-switcher" ];
+}
+
+brand-box {
+    orientation:                 vertical;
+    expand:                      true;
+    padding:                     80px 0px 0px 0px;
+    spacing:                     6px;
+    background-color:            transparent;
+    children:                    [ "textbox-logo", "textbox-distro", "textbox-sub", "textbox-stats" ];
+}
+
+textbox-logo {
+    expand:                      false;
+    padding:                     0px 40px 0px 0px;
+    background-color:            transparent;
+    text-color:                  @mauve;
+    font:                        "JetBrainsMono Nerd Font 70";
+    horizontal-align:            0.5;
+    str:                         "";
+}
+
+textbox-distro {
+    expand:                      false;
+    padding:                     0px;
+    background-color:            transparent;
+    text-color:                  @text;
+    font:                        "JetBrainsMono Nerd Font Bold 13";
+    horizontal-align:            0.5;
+    str:                         "N I X O S";
+}
+
+textbox-sub {
+    expand:                      false;
+    padding:                     0px;
+    background-color:            transparent;
+    text-color:                  @overlay0;
+    font:                        "JetBrainsMono Nerd Font 10";
+    horizontal-align:            0.5;
+    str:                         "Hyprland · NixOS";
+}
+
+textbox-stats {
+    expand:                      false;
+    padding:                     0px;
+    background-color:            transparent;
+    text-color:                  @surface1;
+    font:                        "JetBrainsMono Nerd Font 9";
+    horizontal-align:            0.5;
+    str:                         "";
 }
 
 listbox {
@@ -57,18 +106,6 @@ listbox {
     background-color:            transparent;
     orientation:                 vertical;
     children:                    [ "message", "listview" ];
-}
-
-textbox-art {
-    expand:                      true;
-    padding:                     10px 0px;
-    background-color:            transparent;
-    text-color:                  @subtext0;
-    font:                        "JetBrainsMono Nerd Font 11";
-    markup:                      true;
-    vertical-align:              0.5;
-    horizontal-align:            0.5;
-    str:                         "<span size='57344' foreground='#c89bff'></span>&#10;&#10;<span size='13312' foreground='#e2e8ff'><b>G E N T O O</b></span>&#10;<span size='10240' foreground='#7d80a3'>Hyprland · OpenRC</span>";
 }
 
 inputbar {
