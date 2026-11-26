@@ -56,6 +56,7 @@ in
       fd
       tree-sitter
       gcc
+      gnumake
       git
       curl
       unzip
