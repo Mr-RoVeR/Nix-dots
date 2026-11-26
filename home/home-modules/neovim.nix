@@ -12,16 +12,18 @@ let
     ruff
     typescript-language-server
     svelte-language-server
+    rust-analyzer
 
     # Linters
     eslint_d
     pylint
+    clippy
 
     # Formatters
     stylua
     nixfmt
-    prettier
     black
+    prettier
 
     # Utilities
     ripgrep
@@ -54,6 +56,7 @@ let
     p.cpp
     p.rust
     p.svelte
+    p.black
   ]);
   customNeovim = pkgs.symlinkJoin {
     name = "neovim-wrapped";

@@ -5,5 +5,7 @@
     qbittorrent
     vesktop
     librewolf
+    brave
+    ladybird
   ];
 }
