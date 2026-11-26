@@ -1,7 +1,7 @@
 {
     "logo": {
         "source": "$HOME/nixos-config/dots/fastfetch/NixOS.png",
-        "type": "kitty",
+        "type": "kitty-direct",
         "height": 17,
         "width": 37,
         "padding": {
