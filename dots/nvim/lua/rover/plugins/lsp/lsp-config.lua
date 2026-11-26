@@ -50,15 +50,6 @@ return {
       },
     })
 
-    vim.lsp.config("ruff", {
-      init_options = {
-        settings = {
-          lineLength = 88,
-          lint = { select = { "E", "F", "I", "UP" } },
-        },
-      },
-    })
-
     vim.lsp.enable({
       "lua_ls",
       "nixd",
