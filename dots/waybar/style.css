@@ -6,7 +6,7 @@
 
 @define-color muted     #6e6a86;
 @define-color subtle    #908caa;
-@define-color text      #F5F5F5;
+@define-color text      #e0def4;
 
 @define-color love      #f2739b;
 @define-color gold      #f8c87b;
@@ -14,6 +14,15 @@
 @define-color foam      #a3d9e3;
 @define-color iris      #cdb0f0;
 @define-color pine      #4b9dbd;
+
+@define-color bat100 @foam;
+@define-color bat85  mix(@foam, @iris, 0.5);
+@define-color bat70  @iris;
+@define-color bat55  mix(@iris, @rose, 0.5);
+@define-color bat40  @rose;
+@define-color bat30  @gold;
+@define-color bat20  mix(@gold, @love, 0.5);
+@define-color bat15  @love;
 
 * {
   border: none;
@@ -23,7 +32,7 @@
   min-height: 0;
   font-family: "JetBrainsMono Nerd Font";
   font-size: 16px;
-  font-weight: 700;
+  font-weight: 600;
 }
 
 window#waybar {
@@ -181,11 +190,31 @@ window#waybar.hidden {
 
 #network.disconnected {
   color: @love;
+  border-color: alpha(@love, 0.45);
+  background-image: linear-gradient(
+    to right,
+    alpha(@love, 0.16),
+    alpha(@love, 0.04)
+  );
+}
+
+#network.disabled {
+  color: @muted;
 }
 
 #bluetooth.off,
 #bluetooth.disabled {
   color: @muted;
+}
+
+#bluetooth.connected {
+  color: @foam;
+  border-color: alpha(@foam, 0.5);
+  background-image: linear-gradient(
+    to right,
+    alpha(@foam, 0.18),
+    alpha(@foam, 0.04)
+  );
 }
 
 #memory,
@@ -195,6 +224,56 @@ window#waybar.hidden {
 #power-profiles-daemon,
 #idle_inhibitor {
   color: @subtle;
+}
+
+#power-profiles-daemon.performance {
+  color: @rose;
+  border-color: alpha(@rose, 0.5);
+  background-image: linear-gradient(
+    to right,
+    alpha(@rose, 0.2),
+    alpha(@rose, 0.05)
+  );
+}
+
+#power-profiles-daemon.balanced {
+  color: @iris;
+}
+
+#power-profiles-daemon.power-saver {
+  color: @foam;
+  border-color: alpha(@foam, 0.5);
+  background-image: linear-gradient(
+    to right,
+    alpha(@foam, 0.18),
+    alpha(@foam, 0.04)
+  );
+}
+
+#memory.warning,
+#cpu.warning,
+#temperature.warning,
+#disk.warning {
+  color: @gold;
+  border-color: alpha(@gold, 0.55);
+  background-image: linear-gradient(
+    to right,
+    alpha(@gold, 0.2),
+    alpha(@gold, 0.05)
+  );
+}
+
+#memory.critical,
+#cpu.critical,
+#temperature.critical,
+#disk.critical {
+  color: @love;
+  border-color: alpha(@love, 0.55);
+  background-image: linear-gradient(
+    to right,
+    alpha(@love, 0.22),
+    alpha(@love, 0.06)
+  );
 }
 
 #idle_inhibitor.activated,
@@ -229,8 +308,78 @@ window#waybar.hidden {
 }
 
 #battery {
-  color: @foam;
-  border-color: alpha(@foam, 0.4);
+  color: @bat100;
+  border-color: alpha(@bat100, 0.45);
+}
+
+#battery.lvl100 {
+  color: @bat100;
+  border-color: alpha(@bat100, 0.5);
+  background-image: linear-gradient(
+    to right,
+    alpha(@bat100, 0.22),
+    alpha(@bat85, 0.08)
+  );
+}
+
+#battery.lvl85 {
+  color: @bat85;
+  border-color: alpha(@bat85, 0.5);
+  background-image: linear-gradient(
+    to right,
+    alpha(@bat85, 0.22),
+    alpha(@bat70, 0.08)
+  );
+}
+
+#battery.lvl70 {
+  color: @bat70;
+  border-color: alpha(@bat70, 0.5);
+  background-image: linear-gradient(
+    to right,
+    alpha(@bat70, 0.22),
+    alpha(@bat55, 0.08)
+  );
+}
+
+#battery.lvl55 {
+  color: @bat55;
+  border-color: alpha(@bat55, 0.5);
+  background-image: linear-gradient(
+    to right,
+    alpha(@bat55, 0.22),
+    alpha(@bat40, 0.08)
+  );
+}
+
+#battery.lvl40 {
+  color: @bat40;
+  border-color: alpha(@bat40, 0.5);
+  background-image: linear-gradient(
+    to right,
+    alpha(@bat40, 0.22),
+    alpha(@bat30, 0.08)
+  );
+}
+
+#battery.warning {
+  color: @bat30;
+  border-color: alpha(@bat30, 0.5);
+  background-image: linear-gradient(
+    to right,
+    alpha(@bat30, 0.22),
+    alpha(@bat20, 0.08)
+  );
+}
+
+#battery.lvl20 {
+  color: @bat20;
+  border-color: alpha(@bat20, 0.5);
+  background-image: linear-gradient(
+    to right,
+    alpha(@bat20, 0.22),
+    alpha(@bat15, 0.08)
+  );
 }
 
 #battery.charging,
@@ -251,16 +400,6 @@ window#waybar.hidden {
     to right,
     alpha(@foam, 0.18),
     alpha(@foam, 0.04)
-  );
-}
-
-#battery.warning:not(.charging) {
-  color: @gold;
-  border-color: alpha(@gold, 0.55);
-  background-image: linear-gradient(
-    to right,
-    alpha(@gold, 0.2),
-    alpha(@gold, 0.05)
   );
 }
 
