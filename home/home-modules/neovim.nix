@@ -1,40 +1,5 @@
 { pkgs, ... }:
 let
-  nvimExtraPackages = with pkgs; [
-
-    # LSP
-    lua-language-server
-    nil
-    nixd
-    bash-language-server
-    vscode-langservers-extracted
-    basedpyright
-    ruff
-    typescript-language-server
-    svelte-language-server
-    rust-analyzer
-
-    # Linters
-    eslint_d
-    pylint
-    clippy
-
-    # Formatters
-    stylua
-    nixfmt
-    black
-    prettier
-
-    # Utilities
-    ripgrep
-    fd
-    tree-sitter
-    gcc
-    git
-    curl
-    unzip
-  ];
-
   treesitterParsers = pkgs.vimPlugins.nvim-treesitter.withPlugins (p: [
     p.lua
     p.vim
@@ -56,27 +21,54 @@ let
     p.cpp
     p.rust
     p.svelte
-    p.black
   ]);
-  customNeovim = pkgs.symlinkJoin {
-    name = "neovim-wrapped";
-    paths = [ pkgs.neovim-unwrapped ];
-    nativeBuildInputs = [ pkgs.makeWrapper ];
-    postBuild = ''
-      wrapProgram $out/bin/nvim \
-        --prefix PATH : ${pkgs.lib.makeBinPath nvimExtraPackages}
-      ln -s $out/bin/nvim $out/bin/vi
-      ln -s $out/bin/nvim $out/bin/vim
-    '';
-  };
 in
 {
-  home.packages = [ customNeovim ];
+  programs.neovim = {
+    enable = true;
+    viAlias = true;
+    vimAlias = true;
+    extraPackages = with pkgs; [
+      # Language servers
+      lua-language-server
+      nixd
+      bash-language-server
+      vscode-langservers-extracted
+      basedpyright
+      ruff
+      typescript-language-server
+      svelte-language-server
+      rust-analyzer
+
+      # Linters and formatters
+      eslint_d
+      pylint
+      clippy
+      stylua
+      nixfmt
+      black
+      isort
+      prettier
+      rustfmt
+
+      # Utilities
+      ripgrep
+      fd
+      tree-sitter
+      gcc
+      gnumake
+      git
+      curl
+      unzip
+      nodejs
+    ];
+  };
 
   home.sessionVariables = {
     EDITOR = "nvim";
     VISUAL = "nvim";
   };
 
+  # Nix builds parsers, so Neovim does not need to compile/download them at runtime.
   xdg.dataFile."nvim/site/pack/nix/start/nvim-treesitter".source = treesitterParsers;
 }
